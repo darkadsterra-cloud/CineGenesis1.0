@@ -1,0 +1,105 @@
+[project]
+name = "cinegenesis"
+version = "1.0.0"
+description = "CineGenesis - Advanced AI Movie Generation Platform (Text, Image, Video, Audio)"
+authors = [{ name = "CineGenesis Team" }]
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+license = { text = "CineGenesis Community License" }
+
+dependencies = [
+    "torch>=2.1",
+    "transformers>=4.40",
+    "diffusers>=0.30",
+    "accelerate>=0.30",
+    "safetensors>=0.4",
+    "opencv-python",
+    "pillow",
+    "numpy",
+    "scipy",
+    "tqdm",
+    "huggingface-hub",
+    "xformers",
+    "einops",
+    "moviepy",
+    "soundfile",
+    "librosa",
+]
+
+# ---------------- UV CONFIG ----------------
+
+[tool.uv.sources]
+cinegenesis-core = { workspace = true }
+cinegenesis-pipelines = { workspace = true }
+cinegenesis-ui = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+
+# ---------------- DEV DEPENDENCIES ----------------
+
+[dependency-groups]
+dev = [
+    "google-cloud-storage>=2.0",
+    "matplotlib>=3.7",
+    "pre-commit>=4.3.0",
+    "ruff>=0.14.3",
+    "pytest~=9.0",
+]
+
+# ---------------- RUFF CONFIG ----------------
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+exclude = []
+
+[tool.ruff.lint]
+select = [
+    "E","F","W","I","N","ANN","B","A","COM","C4","DTZ",
+    "EXE","PIE","T20","PT","SIM","ARG","PTH","ERA","RUF","PL"
+]
+ignore = [
+    "ANN002",
+    "ANN003",
+    "ANN204",
+    "COM812",
+    "PTH123",
+    "PLR2004",
+    "N812",
+]
+
+[tool.ruff.lint.pylint]
+max-args = 10
+
+[tool.ruff.lint.isort]
+known-first-party = ["cinegenesis_core", "cinegenesis_pipelines", "cinegenesis_ui"]
+
+# ---------------- OPTIONAL FEATURES ----------------
+
+[project.optional-dependencies]
+video = [
+    "ffmpeg-python",
+    "imageio[ffmpeg]"
+]
+
+audio = [
+    "torchaudio",
+    "pydub"
+]
+
+ui = [
+    "gradio",
+    "fastapi",
+    "uvicorn"
+]
+
+# ---------------- BUILD SYSTEM ----------------
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
