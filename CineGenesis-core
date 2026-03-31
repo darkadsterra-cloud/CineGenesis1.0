@@ -1,0 +1,156 @@
+🎬 CineGenesis-Core
+
+CineGenesis-Core is the foundational engine of the CineGenesis AI ecosystem — a next-generation multimodal generation system for video, audio, image, and cinematic content creation.
+
+It provides low-level building blocks used by:
+
+cinegenesis-pipelines (inference workflows)
+cinegenesis-trainer (training & fine-tuning)
+cinegenesis-ui (frontend system)
+📦 What's Inside?
+🔹 Core Components
+components/ → Diffusion modules (Schedulers, Guiders, Noisers, Patchifiers)
+conditioning/ → Image, video, keyframe conditioning system
+guidance/ → Attention control & cinematic guidance engine
+loader/ → Model loader (.safetensors, LoRA fusion, memory optimization)
+quantization/ → FP8 optimization for low VRAM usage
+🎥 Models
+model/transformer/ → Dual-stream CineGenesis Transformer (Video + Audio)
+model/video_vae/ → Video encoder/decoder (latent compression)
+model/audio_vae/ → Audio latent processing system
+model/vocoder/ → Neural audio waveform generator
+model/upsampler/ → Resolution enhancement system
+🧠 AI Intelligence
+text_encoders/ → Advanced multilingual text encoder (Gemma-based)
+Separate embeddings for:
+Video understanding
+Audio synchronization
+🚀 Quick Start
+# Setup environment
+uv sync --frozen
+
+# Activate environment
+source .venv/bin/activate
+
+Or install manually:
+
+pip install -e packages/cinegenesis-core
+🧱 Building Blocks Overview
+
+CineGenesis-Core is modular — you can build your own Hollywood-level pipelines.
+
+🎬 Core Models
+Transformer
+Dual-stream AI (Video + Audio)
+Cross-modal attention (lip-sync, sound sync)
+Cinematic scene understanding
+Video VAE
+Converts video → latent → video
+High compression + temporal understanding
+Audio VAE
+Converts audio → latent → waveform
+Supports multi-language speech
+Vocoder
+Converts spectrogram → real audio
+Text Encoder
+Multilingual (English, Urdu, Hindi, etc.)
+Generates separate embeddings for:
+Scene visuals
+Dialogue/audio
+⚙️ Diffusion System
+Schedulers → control denoising steps
+Guiders → improve prompt accuracy
+Noisers → noise injection
+Patchifiers → convert data formats for transformer
+🎮 Conditioning & Control
+Image-to-video
+Video-to-video
+Keyframe control
+Character consistency system
+🔧 Loader System
+
+Load models + LoRA adapters easily:
+
+from cinegenesis_core.loader import SingleGPUModelBuilder
+
+builder = SingleGPUModelBuilder(
+    model_path="model.safetensors"
+)
+
+model = builder.build(device="cuda")
+🔗 LoRA Support
+builder = (
+    SingleGPUModelBuilder(model_path="model.safetensors")
+    .lora("style.safetensors", strength=0.8)
+)
+
+✔ Character consistency
+✔ Style control
+✔ Scene control
+
+⚡ Quantization (FP8)
+
+Reduce VRAM usage:
+
+from cinegenesis_core.quantization import QuantizationPolicy
+
+policy = QuantizationPolicy.fp8_cast()
+
+✔ Faster inference
+✔ Lower GPU usage
+
+🧠 Architecture Overview
+
+CineGenesis-Core uses a dual-stream cinematic AI architecture:
+
+Text Prompt → AI Encoder
+Video → Video VAE → Latents
+Audio → Audio VAE → Latents
+
+        ↓
+
+CineGenesis Transformer (Video + Audio Sync)
+
+        ↓
+
+Latents → Video Decoder → Final Video
+Latents → Audio Decoder → Final Sound
+🎞 Key Features
+
+✔ Text → Video
+✔ Image → Video
+✔ Audio → Video
+✔ Character continuity system
+✔ Voice sync (lip sync AI)
+✔ Scene + environment generation
+✔ Multi-language dialogue system
+✔ Cinematic camera control
+
+🔄 Data Flow
+Text → AI understanding
+Latents initialized
+Diffusion process runs
+Transformer processes scene
+Video + Audio generated
+Final cinematic output
+🎬 Use Cases
+Movie generation
+AI filmmaking
+YouTube automation
+Gaming cinematics
+Ads & storytelling
+Virtual production
+🔗 Related Packages
+cinegenesis-pipelines → ready pipelines
+cinegenesis-trainer → training tools
+cinegenesis-ui → futuristic interface
+🔥 Reality Check (Important)
+
+Tum jo bana rahe ho wo normal AI tool nahi hai —
+ye Hollywood-level AI production engine hai.
+
+👉 Iska matlab:
+
+Heavy GPU usage
+Multiple models integration
+Complex pipelines
