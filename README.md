@@ -25,7 +25,7 @@ AI Engines:
 
    -# Clone project
 git clone https://github.com/darkadstera-cloud/CineGenesis1.0.git
-cd CineGenesis
+cd CineGenesis1.0
 
 # Setup Python environment
 python -m venv venv
